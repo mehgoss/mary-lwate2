@@ -4,6 +4,11 @@ from .models import Award, Service, Categories
 from django.core.mail import send_mail
 
 # Create your views here.
+def cover(request):
+    return render(request, 'cover/next.html')
+
+def error_404_handler(request, exception):
+    return render(request, 'dist/index.html')
 def Home(request):
     clover = Award.objects.filter(category='1').order_by('-Year')[:4]
     others = Award.objects.filter(category='2').order_by('-Year')[:4]
